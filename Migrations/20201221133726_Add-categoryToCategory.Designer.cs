@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductManagerTenta1.Data;
 
 namespace ProductManagerTenta1.Migrations
 {
     [DbContext(typeof(ProductManagerContext))]
-    partial class ProductManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20201221133726_Add-categoryToCategory")]
+    partial class AddcategoryToCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,16 +110,10 @@ namespace ProductManagerTenta1.Migrations
             modelBuilder.Entity("ProductManagerTenta1.Models.Category", b =>
                 {
                     b.HasOne("ProductManagerTenta1.Models.Category", "ParentCategory")
-                        .WithMany("Categories")
-                        .HasForeignKey("ParentCategoryId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .WithMany()
+                        .HasForeignKey("ParentCategoryId");
 
                     b.Navigation("ParentCategory");
-                });
-
-            modelBuilder.Entity("ProductManagerTenta1.Models.Category", b =>
-                {
-                    b.Navigation("Categories");
                 });
 #pragma warning restore 612, 618
         }

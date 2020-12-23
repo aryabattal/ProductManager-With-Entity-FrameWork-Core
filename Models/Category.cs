@@ -1,7 +1,7 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+
 
 namespace ProductManagerTenta1.Models
 {
@@ -11,26 +11,23 @@ namespace ProductManagerTenta1.Models
         {
 
         }
-        public Category(string name)
+        public Category(string categoryName)
         {
-    
-            Name = Name;
+
+            CategoryName = categoryName;
         }
-        public Category(int id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
-     
+   
         public int Id { get; protected set; }
 
         [Required]
         [MaxLength(50)]
-        public string Name { get; protected set; }
+        public string CategoryName { get; protected set; }
+        public ICollection<Article> Articles { get; protected set; }
+            = new List<Article>();
 
-        public int TotalProducts { get; protected set; }
-        public ICollection<Article> articles { get; protected set; }
-
-
+        public ICollection<Category> Categories { get; protected set; }
+           = new List<Category>();
+        public Category ParentCategory { get; protected set; }
+            
     }
 }
