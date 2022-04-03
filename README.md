@@ -1,3 +1,5 @@
-#ProductManager Tenta
+# ProductManager 
 
-##Program with Entity FrameWork Core.
+## Program with Entity FrameWork Core and SQL server
+
+run update-database
